@@ -119,10 +119,10 @@ export function useGameEventProvider(
 
     await setRequiredFeatures();
 
-    const { gameInfo, success } = await getInfo();
+    const { res, success } = await getInfo();
 
-    if (gameInfo && success) {
-      onInfoUpdates(gameInfo);
+    if (res && success) {
+      onInfoUpdates({ info: res );
     }
   }, [setRequiredFeatures, onInfoUpdates, started, registerEvents]);
 
