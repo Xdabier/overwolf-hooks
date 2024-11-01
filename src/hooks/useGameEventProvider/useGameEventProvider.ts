@@ -10,7 +10,7 @@ interface UseGameEventProviderEventsDelegate {
   ): void;
   onNewEvents(events: overwolf.games.events.NewGameEvents): void;
 }
-const getInfo = (): Promise<overwolf.games.GetGameInfoResult> => {
+const getInfo = (): Promise<overwolf.games.events.GetInfoResult> => {
   return new Promise((resolve) => {
     overwolf.games.events.getInfo((info) => resolve(info));
   });
@@ -122,7 +122,7 @@ export function useGameEventProvider(
     const { res, success } = await getInfo();
 
     if (res && success) {
-      onInfoUpdates({ info: res );
+      onInfoUpdates({ info: res });
     }
   }, [setRequiredFeatures, onInfoUpdates, started, registerEvents]);
 
